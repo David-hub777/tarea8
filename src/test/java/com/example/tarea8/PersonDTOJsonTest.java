@@ -1,14 +1,5 @@
 package com.example.tarea8;
 
-import com.example.tarea8.dto.PersonDTO;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.json.JsonTest;
-import org.springframework.boot.test.json.JacksonTester;
-import org.springframework.test.context.junit4.SpringRunner;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -16,9 +7,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.json.JsonTest;
+import org.springframework.boot.test.json.JacksonTester;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.example.tarea8.dto.PersonDTO;
 
 @JsonTest
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 public class PersonDTOJsonTest {
 
   @Autowired private JacksonTester<PersonDTO> json;
@@ -55,7 +55,7 @@ public class PersonDTOJsonTest {
     }
   }
 
-  @Before
+  @BeforeEach
   public void setup() throws ParseException {
     personDTO = new PersonDTO(FIRST_NAME, SECOND_NAME, DATE_OF_BIRTH, PROFESSION, SALARY);
   }
